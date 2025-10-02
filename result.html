@@ -1,0 +1,25 @@
+<head>
+  <meta charset="utf-8" />
+  <title>CDDCSC SearchSG Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Import Search.gov.sg widget -->
+  <script 
+    id="searchsg-config" 
+    src="https://api.search.gov.sg/v1/searchconfig.js?clientId=15c52337-ddb9-4d24-9bcf-6d10ce033e85&page=results"
+    defer>
+  </script>
+</head> 
+<body>
+  <div class="container">
+  <div id="searchsg-result-container"></div>
+  </div>
+  <script>
+    function sendHeight() {
+      var height = document.body.scrollHeight;
+      parent.postMessage({ frameHeight: height }, '*');
+    }
+    window.onload = sendHeight;
+    //window.addEventListener('resize', sendHeight);
+    new MutationObserver(sendHeight).observe(document.body, { childList: true, subtree: true, attributes: true });
+  </script>
